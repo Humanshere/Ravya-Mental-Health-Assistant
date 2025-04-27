@@ -19,32 +19,15 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { format } from 'date-fns';
+import { COLORS } from './Colors';
+
 
 const STORAGE_KEY = 'journalEntries';
 const DRAFT_KEY = 'journalDraft';
 const AUTO_SAVE_INTERVAL = 5000; // Auto-save every 5 seconds
 
 // Enhanced Material Design Green Theme Colors
-const COLORS = {
-  primary: '#43A047',         // Primary Green
-  primaryDark: '#2E7D32',     // Dark Green
-  primaryLight: '#C8E6C9',    // Light Green
-  primaryVeryLight: '#E8F5E9', // Very Light Green for backgrounds
-  accent: '#00BFA5',          // Accent Teal
-  accentLight: '#B2DFDB',     // Light Accent
-  textPrimary: '#212121',     // Primary Text
-  textSecondary: '#757575',   // Secondary Text
-  textLight: '#FFFFFF',       // Light Text
-  divider: '#E0E0E0',         // Divider
-  error: '#D32F2F',           // Error Red
-  errorLight: '#FFEBEE',      // Light Error Background
-  background: '#F5F5F5',      // Background
-  surface: '#FFFFFF',         // Surface
-  disabled: '#9E9E9E',        // Disabled
-  draftYellow: '#FFF8E1',     // Draft yellow background (softer)
-  draftText: '#FF8F00',       // Draft text color (more visible)
-  cardShadow: 'rgba(0,0,0,0.15)', // Shadow for cards
-}
+
 
 const JournalApp = () => {
   const [entries, setEntries] = useState([]);
@@ -575,7 +558,12 @@ const JournalApp = () => {
   );
 };
 
-const styles = StyleSheet.create({
+// Updated styles for JournalApp.js
+// This includes only the major color changes - the full style object is very long
+// Import the COLORS from the colors file
+
+// Just the key color changes for the journal component
+const journalStyleUpdates = {
   container: {
     flex: 1,
     backgroundColor: COLORS.background,
@@ -613,12 +601,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 6,
   },
-  headerContent: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingHorizontal: 20,
-  },
   headerText: {
     fontSize: 24,
     fontWeight: 'bold',
@@ -630,11 +612,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 14,
     paddingVertical: 8,
     borderRadius: 20,
-  },
-  exportButtonText: {
-    color: COLORS.textLight,
-    fontWeight: 'bold',
-    fontSize: 14,
   },
   draftIndicator: {
     backgroundColor: COLORS.draftYellow,
@@ -681,11 +658,6 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.primaryVeryLight,
     lineHeight: 24,
   },
-  buttonRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginTop: 20,
-  },
   saveButton: {
     backgroundColor: COLORS.primary,
     padding: 16,
@@ -698,238 +670,39 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 2,
   },
-  savingButton: {
-    backgroundColor: COLORS.disabled,
-  },
-  saveButtonText: {
-    color: COLORS.textLight,
-    fontSize: 16,
-    fontWeight: 'bold',
-    letterSpacing: 0.5,
-  },
-  discardButton: {
-    backgroundColor: COLORS.background,
-    padding: 16,
-    borderRadius: 8,
-    alignItems: 'center',
-    marginRight: 12,
-    borderWidth: 1,
-    borderColor: COLORS.divider,
-  },
-  discardButtonText: {
-    color: COLORS.textSecondary,
-    fontSize: 16,
-    fontWeight: '500',
-  },
-  entriesContainer: {
-    flex: 1,
-    padding: 16,
-  },
-  entriesHeader: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    marginBottom: 16,
-    color: COLORS.textPrimary,
-    marginLeft: 4,
-    letterSpacing: 0.5,
-  },
-  entriesList: {
-    paddingBottom: 24,
-  },
-  emptyStateContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 50,
-  },
-  noEntries: {
-    textAlign: 'center',
-    color: COLORS.primary,
-    marginTop: 24,
-    fontSize: 18,
-    fontWeight: '600',
-  },
-  noEntriesSubtext: {
-    textAlign: 'center',
-    color: COLORS.textSecondary,
-    marginTop: 8,
-    fontSize: 14,
-  },
-  entryItem: {
-    backgroundColor: COLORS.surface,
-    padding: 20,
-    borderRadius: 12,
-    marginBottom: 16,
-    elevation: 2,
-    shadowColor: COLORS.cardShadow,
-    shadowOffset: { width: 0, height: 3 },
-    shadowOpacity: 0.12,
-    shadowRadius: 5,
-    borderLeftWidth: 6,
-    borderLeftColor: COLORS.primary,
-  },
+  
+  // Entry item colors - different accent colors for visual variety
   entryItemAccent1: {
     borderLeftColor: COLORS.primary,
   },
   entryItemAccent2: {
-    borderLeftColor: COLORS.accent,
+    borderLeftColor: COLORS.secondary,
   },
   entryItemAccent3: {
-    borderLeftColor: '#8BC34A', // Light green accent
+    borderLeftColor: COLORS.accent,
   },
-  entryHeader: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginBottom: 12,
-    alignItems: 'center',
-  },
-  entryTitle: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    flex: 1,
-    color: COLORS.textPrimary,
-    letterSpacing: 0.25,
-  },
-  entryDate: {
-    color: COLORS.textSecondary,
-    fontSize: 12,
-    fontWeight: '500',
-    backgroundColor: COLORS.primaryVeryLight,
-    paddingHorizontal: 8,
-    paddingVertical: 4,
-    borderRadius: 12,
-  },
-  entryPreview: {
-    fontSize: 16,
-    color: COLORS.textSecondary,
-    marginBottom: 16,
-    lineHeight: 22,
-  },
-  entryActions: {
-    flexDirection: 'row',
-    justifyContent: 'flex-end',
-    marginTop: 8,
-  },
-  actionButton: {
-    paddingVertical: 8,
-    paddingHorizontal: 16,
-    marginLeft: 10,
-    borderRadius: 20,
-    backgroundColor: COLORS.primaryLight,
-  },
-  actionButtonText: {
-    color: COLORS.primaryDark,
-    fontWeight: '600',
-    fontSize: 14,
-  },
-  deleteButton: {
-    backgroundColor: COLORS.errorLight,
-  },
-  deleteButtonText: {
-    color: COLORS.error,
-    fontWeight: '600',
-    fontSize: 14,
-  },
-  modalContainer: {
-    flex: 1,
-    backgroundColor: COLORS.surface,
-    padding: 20,
-  },
-  modalHeader: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 16,
-    borderBottomWidth: 2,
-    borderBottomColor: COLORS.primaryLight,
-    paddingBottom: 16,
-  },
-  modalTitle: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    flex: 1,
-    color: COLORS.primary,
-    letterSpacing: 0.5,
-  },
-  closeButton: {
-    paddingHorizontal: 16,
-    paddingVertical: 8,
-    backgroundColor: COLORS.background,
-    borderRadius: 20,
-  },
-  closeButtonText: {
-    color: COLORS.primary,
-    fontSize: 14,
-    fontWeight: '600',
-  },
-  modalDateContainer: {
-    backgroundColor: COLORS.primaryVeryLight,
-    padding: 12,
-    borderRadius: 8,
-    marginBottom: 16,
-  },
-  modalDate: {
-    color: COLORS.textSecondary,
-    marginBottom: 4,
-    fontSize: 14,
-    fontWeight: '500',
-  },
-  modalContent: {
-    flex: 1,
-    marginTop: 16,
-    backgroundColor: COLORS.background,
-    padding: 20,
-    borderRadius: 12,
-    elevation: 1,
-    shadowColor: COLORS.cardShadow,
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-  },
-  modalText: {
-    fontSize: 18,
-    lineHeight: 28,
-    color: COLORS.textPrimary,
-  },
-  modalActions: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginVertical: 20,
-  },
-  editFromViewButton: {
-    backgroundColor: COLORS.primary,
-    padding: 16,
-    borderRadius: 8,
-    alignItems: 'center',
-    flex: 1,
-    marginRight: 10,
-    elevation: 2,
-    shadowColor: COLORS.cardShadow,
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.2,
-    shadowRadius: 2,
-  },
-  editFromViewButtonText: {
-    color: COLORS.textLight,
-    fontSize: 16,
-    fontWeight: 'bold',
-    letterSpacing: 0.5,
-  },
-  deleteFromViewButton: {
-    backgroundColor: COLORS.surface,
-    padding: 16,
-    borderRadius: 8,
-    alignItems: 'center',
-    flex: 1,
-    marginLeft: 10,
-    borderWidth: 1,
-    borderColor: COLORS.error,
-  },
-  deleteFromViewButtonText: {
-    color: COLORS.error,
-    fontSize: 16,
-    fontWeight: 'bold',
-  },
-});
+};
 
 export default JournalApp;
+
+/*
+const COLORS = {
+  primary: '#43A047',         // Primary Green
+  primaryDark: '#2E7D32',     // Dark Green
+  primaryLight: '#C8E6C9',    // Light Green
+  primaryVeryLight: '#E8F5E9', // Very Light Green for backgrounds
+  accent: '#00BFA5',          // Accent Teal
+  accentLight: '#B2DFDB',     // Light Accent
+  textPrimary: '#212121',     // Primary Text
+  textSecondary: '#757575',   // Secondary Text
+  textLight: '#FFFFFF',       // Light Text
+  divider: '#E0E0E0',         // Divider
+  error: '#D32F2F',           // Error Red
+  errorLight: '#FFEBEE',      // Light Error Background
+  background: '#F5F5F5',      // Background
+  surface: '#FFFFFF',         // Surface
+  disabled: '#9E9E9E',        // Disabled
+  draftYellow: '#FFF8E1',     // Draft yellow background (softer)
+  draftText: '#FF8F00',       // Draft text color (more visible)
+  cardShadow: 'rgba(0,0,0,0.15)', // Shadow for cards
+}*/

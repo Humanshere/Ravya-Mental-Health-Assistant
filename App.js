@@ -9,6 +9,7 @@ import {
   StatusBar,
   Image
 } from 'react-native';
+import { COLORS } from './components/Colors';
 
 // Import our components
 import Chat from './components/Chat';
@@ -128,16 +129,21 @@ const App = () => {
   );
 };
 
+// Updated styles for App.js
+// Import the COLORS from the colors file
+
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F5F5F5',
+    backgroundColor: COLORS.background,
   },
   contentContainer: {
     flex: 1,
   },
   screenContainer: {
     flex: 1,
+    backgroundColor: COLORS.background,
   },
   header: {
     flexDirection: 'row',
@@ -145,9 +151,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingTop: 16,
     paddingBottom: 8,
-    backgroundColor: '#FFFFFF',
-    borderBottomWidth: 1,
-    borderBottomColor: '#E0E0E0',
+    backgroundColor: COLORS.primary,
+    elevation: 2,
+    shadowColor: COLORS.cardShadow,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
   },
   backButton: {
     padding: 8,
@@ -155,11 +164,12 @@ const styles = StyleSheet.create({
   backIcon: {
     width: 24,
     height: 24,
+    tintColor: COLORS.textLight,
   },
   headerTitle: {
     fontSize: 20,
     fontWeight: '600',
-    color: '#323232',
+    color: COLORS.textLight,
     marginLeft: 16,
   },
   mainContainer: {
@@ -167,11 +177,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
+    backgroundColor: COLORS.background,
   },
   mainTitle: {
     fontSize: 28,
     fontWeight: '800',
-    color: '#323232',
+    color: COLORS.primaryDark,
     marginBottom: 40,
   },
   buttonContainer: {
@@ -183,35 +194,38 @@ const styles = StyleSheet.create({
   mainButton: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#FFFFFF',
+    backgroundColor: COLORS.surface,
     paddingVertical: 16,
     paddingHorizontal: 24,
     borderRadius: 16,
     width: '80%',
     elevation: 4,
-    shadowColor: '#000',
+    shadowColor: COLORS.cardShadow,
     shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
+    shadowOpacity: 0.2,
     shadowRadius: 4,
+    borderLeftWidth: 4,
+    borderLeftColor: COLORS.primary,
   },
   buttonIcon: {
     width: 32,
     height: 32,
     marginRight: 16,
+    tintColor: COLORS.primary,
   },
   buttonText: {
     fontSize: 18,
     fontWeight: '600',
-    color: '#323232',
+    color: COLORS.textPrimary,
   },
   navBar: {
     flexDirection: 'row',
     height: 70,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: COLORS.surface,
     borderTopWidth: 1,
-    borderTopColor: '#E0E0E0',
+    borderTopColor: COLORS.divider,
     elevation: 8,
-    shadowColor: '#000',
+    shadowColor: COLORS.cardShadow,
     shadowOffset: { width: 0, height: -2 },
     shadowOpacity: 0.1,
     shadowRadius: 4,
@@ -226,10 +240,12 @@ const styles = StyleSheet.create({
     width: 24,
     height: 24,
     marginBottom: 4,
+    tintColor: COLORS.primary,
   },
   navButtonText: {
     fontSize: 14,
-    color: '#323232',
+    color: COLORS.textPrimary,
+    fontWeight: '500',
   },
 });
 

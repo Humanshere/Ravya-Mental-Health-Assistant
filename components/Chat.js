@@ -3,6 +3,7 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, Image, FlatList, TextInput, TouchableOpacity } from "react-native";
 import Response from "./response";
 import Message from "./message";
+import { COLORS } from './Colors';
 
 export default function Chat() {
 	const [inputText, setInputText] = useState("");
@@ -46,42 +47,56 @@ export default function Chat() {
 	);
 }
 
+// Updated styles for Chat.js
+// Import the COLORS from the colors file
+
 const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		gap: 16,
-		paddingTop: 36,
-	},
-	header: {
-		flexDirection: "row",
-		alignItems: "center",
-		paddingHorizontal: 16,
-		margin: 8,
-		gap: 8,
-	},
-	icon: {
-		width: 32,
-		height: 32,
-	},
-	searchBar: {
-		backgroundColor: "#ffffff",
-		width: "100%",
-		position: "absolute",
-		bottom: 0,
-		flexDirection: "row",
-		justifyContent: "center",
-		alignItems: "center",
-		paddingHorizontal: 32,
-		paddingVertical: 16,
-		gap: 8,
-	},
-	input: {
-		backgroundColor: "#fff",
-		width: "100%",
-		fontSize: 16,
-		paddingVertical: 16,
-		paddingHorizontal: 24,
-		borderRadius: 32,
-		borderWidth: 0.1,
-	},
+  container: {
+    flex: 1,
+    gap: 16,
+    paddingTop: 16,
+    backgroundColor: COLORS.background,
+  },
+  header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 16,
+    margin: 8,
+    gap: 8,
+  },
+  icon: {
+    width: 32,
+    height: 32,
+    tintColor: COLORS.primary,
+  },
+  searchBar: {
+    backgroundColor: COLORS.surface,
+    width: '100%',
+    position: 'absolute',
+    bottom: 0,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 32,
+    paddingVertical: 16,
+    gap: 8,
+    borderTopWidth: 1,
+    borderTopColor: COLORS.divider,
+    elevation: 4,
+    shadowColor: COLORS.cardShadow,
+    shadowOffset: { width: 0, height: -2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 2,
+  },
+  input: {
+    backgroundColor: COLORS.primaryVeryLight,
+    width: '100%',
+    fontSize: 16,
+    paddingVertical: 14,
+    paddingHorizontal: 24,
+    borderRadius: 24,
+    borderWidth: 1,
+    borderColor: COLORS.primaryLight,
+    color: COLORS.textPrimary,
+  },
 });

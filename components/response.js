@@ -3,6 +3,7 @@ import { StyleSheet, View, Image, Text } from "react-native";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import Markdown from "react-native-markdown-display";
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { COLORS } from './Colors';
 
 const date = new Date();
 const API_KEY = "AIzaSyDT1s8aYX1lyyorvfHwsXDdCGFlbhequXw";
@@ -124,17 +125,95 @@ export default function Response(props) {
   );
 }
 
+// Updated styles for Response.js
+// Import the COLORS from the colors file
+
 const styles = StyleSheet.create({
   response: {
     flexDirection: "column",
-    gap: 8,
-    backgroundColor: "#fafafa",
-    marginBottom: 8,
+    gap: 10,
+    backgroundColor: COLORS.secondary,
+    marginBottom: 12,
     padding: 16,
     borderRadius: 16,
+    borderTopLeftRadius: 4,
+    marginRight: 8,
+    marginLeft: 24,
+    elevation: 2,
+    shadowColor: COLORS.cardShadow,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
   },
   icon: {
     width: 28,
     height: 28,
+    tintColor: COLORS.textLight,
   },
+  responseHeader: {
+    flexDirection: "row", 
+    alignItems: "center", 
+    justifyContent: "space-between"
+  },
+  botInfo: {
+    flexDirection: "row", 
+    alignItems: "center", 
+    gap: 8
+  },
+  botName: {
+    fontWeight: '600',
+    color: COLORS.textLight,
+  },
+  timestamp: {
+    fontSize: 10, 
+    fontWeight: "600",
+    color: COLORS.primaryLight,
+  },
+  markdownStyle: {
+    body: {
+      color: COLORS.textLight,
+      fontSize: 14,
+      lineHeight: 22,
+    },
+    heading1: {
+      color: COLORS.textLight,
+      fontWeight: 'bold',
+      marginTop: 8,
+      marginBottom: 4,
+    },
+    heading2: {
+      color: COLORS.textLight,
+      fontWeight: 'bold',
+      marginTop: 8,
+      marginBottom: 4,
+    },
+    heading3: {
+      color: COLORS.textLight,
+      fontWeight: 'bold',
+      marginTop: 8,
+      marginBottom: 4,
+    },
+    strong: {
+      color: COLORS.textLight,
+      fontWeight: 'bold',
+    },
+    em: {
+      color: COLORS.textLight,
+      fontStyle: 'italic',
+    },
+    link: {
+      color: COLORS.primaryVeryLight,
+      textDecorationLine: 'underline',
+    },
+    blockquote: {
+      backgroundColor: 'rgba(255,255,255,0.1)',
+      padding: 8,
+      borderLeftWidth: 4,
+      borderLeftColor: COLORS.primaryLight,
+      marginVertical: 8,
+    },
+    blockquoteText: {
+      color: COLORS.textLight,
+    },
+  }
 });
