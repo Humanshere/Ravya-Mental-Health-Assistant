@@ -26,8 +26,3 @@ Start the App
 ```bash
   npm start
 ```
-
-## Screenshots
-![App](https://github.com/ErenElagz/Beginner-Chat-Bot-in-React-Native-Gemini/assets/125195062/133c8b9a-b430-4877-b5be-a9cd41fe33ee)
-
-
