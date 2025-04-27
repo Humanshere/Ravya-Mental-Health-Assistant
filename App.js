@@ -23,7 +23,7 @@ const App = () => {
   // Main screen component
   const MainScreen = () => (
     <View style={styles.mainContainer}>
-      <Text style={styles.mainTitle}>Mental Health App</Text>
+      <Text style={styles.mainTitle}>RAVYA</Text>
       <View style={styles.buttonContainer}>
         <TouchableOpacity 
           style={styles.mainButton}

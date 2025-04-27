@@ -20,7 +20,7 @@ export default function Chat() {
 			{/* Header */}
 			<View style={styles.header}>
 				<Image source={require("./assets/icons/robot.png")} style={styles.icon} />
-				<Text style={{ fontSize: 24, fontWeight: "800", color: "#323232" }}>Mental Health AI</Text>
+				<Text style={{ fontSize: 24, fontWeight: "800", color: "#323232" }}>RAVYA</Text>
 			</View>
 
 			{/* Content */}
@@ -38,7 +38,7 @@ export default function Chat() {
 
 			{/* Search-Bar */}
 			<View style={styles.searchBar}>
-				<TextInput placeholder="Ask to Mental Health AI" style={styles.input} value={inputText} onChangeText={(text) => setInputText(text)} selectionColor={"#323232"}></TextInput>
+				<TextInput placeholder="Ask RAVYA" style={styles.input} value={inputText} onChangeText={(text) => setInputText(text)} selectionColor={"#323232"}></TextInput>
 				<TouchableOpacity onPress={SearchInput}>
 					<Image source={require("./assets/icons/right-arrow.png")} style={styles.icon} />
 				</TouchableOpacity>
