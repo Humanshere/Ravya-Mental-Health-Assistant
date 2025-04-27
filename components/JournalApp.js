@@ -558,12 +558,10 @@ const JournalApp = () => {
   );
 };
 
-// Updated styles for JournalApp.js
-// This includes only the major color changes - the full style object is very long
-// Import the COLORS from the colors file
+// JournalApp.js
+// Updated styles that properly use the COLORS imported from Colors.js
 
-// Just the key color changes for the journal component
-const journalStyleUpdates = {
+const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: COLORS.background,
@@ -601,6 +599,12 @@ const journalStyleUpdates = {
     shadowOpacity: 0.2,
     shadowRadius: 6,
   },
+  headerContent: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: 16,
+  },
   headerText: {
     fontSize: 24,
     fontWeight: 'bold',
@@ -612,6 +616,11 @@ const journalStyleUpdates = {
     paddingHorizontal: 14,
     paddingVertical: 8,
     borderRadius: 20,
+  },
+  exportButtonText: {
+    color: COLORS.textLight,
+    fontWeight: '600',
+    fontSize: 14,
   },
   draftIndicator: {
     backgroundColor: COLORS.draftYellow,
@@ -658,6 +667,12 @@ const journalStyleUpdates = {
     backgroundColor: COLORS.primaryVeryLight,
     lineHeight: 24,
   },
+  buttonRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 16,
+    gap: 12,
+  },
   saveButton: {
     backgroundColor: COLORS.primary,
     padding: 16,
@@ -670,8 +685,71 @@ const journalStyleUpdates = {
     shadowOpacity: 0.2,
     shadowRadius: 2,
   },
-  
-  // Entry item colors - different accent colors for visual variety
+  savingButton: {
+    backgroundColor: COLORS.primaryDark,
+  },
+  saveButtonText: {
+    color: COLORS.textLight,
+    fontWeight: '600',
+    fontSize: 16,
+  },
+  discardButton: {
+    backgroundColor: COLORS.errorLight,
+    padding: 16,
+    borderRadius: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  discardButtonText: {
+    color: COLORS.error,
+    fontWeight: '600',
+    fontSize: 16,
+  },
+  entriesContainer: {
+    flex: 1,
+    paddingHorizontal: 16,
+    paddingBottom: 24,
+  },
+  entriesHeader: {
+    fontSize: 18,
+    fontWeight: '600',
+    color: COLORS.primaryDark,
+    marginBottom: 16,
+    marginLeft: 4,
+  },
+  entriesList: {
+    paddingBottom: 24,
+  },
+  emptyStateContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingVertical: 40,
+  },
+  noEntries: {
+    fontSize: 18,
+    fontWeight: '600',
+    color: COLORS.textSecondary,
+    textAlign: 'center',
+    marginBottom: 8,
+  },
+  noEntriesSubtext: {
+    fontSize: 14,
+    color: COLORS.textSecondary,
+    textAlign: 'center',
+  },
+  entryItem: {
+    backgroundColor: COLORS.surface,
+    padding: 16,
+    borderRadius: 12,
+    marginBottom: 16,
+    elevation: 2,
+    shadowColor: COLORS.cardShadow,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    borderLeftWidth: 4,
+  },
   entryItemAccent1: {
     borderLeftColor: COLORS.primary,
   },
@@ -681,28 +759,134 @@ const journalStyleUpdates = {
   entryItemAccent3: {
     borderLeftColor: COLORS.accent,
   },
-};
+  entryHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 8,
+  },
+  entryTitle: {
+    fontSize: 18,
+    fontWeight: '600',
+    color: COLORS.textPrimary,
+    flex: 1,
+  },
+  entryDate: {
+    fontSize: 12,
+    color: COLORS.textSecondary,
+    marginLeft: 8,
+  },
+  entryPreview: {
+    fontSize: 14,
+    color: COLORS.textPrimary,
+    marginBottom: 16,
+    lineHeight: 20,
+  },
+  entryActions: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    gap: 8,
+  },
+  actionButton: {
+    paddingVertical: 6,
+    paddingHorizontal: 12,
+    borderRadius: 6,
+    backgroundColor: COLORS.primaryVeryLight,
+  },
+  actionButtonText: {
+    color: COLORS.primary,
+    fontWeight: '600',
+    fontSize: 14,
+  },
+  deleteButton: {
+    backgroundColor: COLORS.errorLight,
+  },
+  deleteButtonText: {
+    color: COLORS.error,
+    fontWeight: '600',
+    fontSize: 14,
+  },
+  modalContainer: {
+    flex: 1,
+    backgroundColor: COLORS.background,
+  },
+  modalHeader: {
+    backgroundColor: COLORS.primary,
+    padding: 16,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  modalTitle: {
+    fontSize: 20,
+    fontWeight: '700',
+    color: COLORS.textLight,
+    flex: 1,
+  },
+  closeButton: {
+    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+    paddingHorizontal: 14,
+    paddingVertical: 8,
+    borderRadius: 20,
+  },
+  closeButtonText: {
+    color: COLORS.textLight,
+    fontWeight: '600',
+    fontSize: 14,
+  },
+  modalDateContainer: {
+    backgroundColor: COLORS.primaryVeryLight,
+    padding: 12,
+    borderBottomWidth: 1,
+    borderBottomColor: COLORS.divider,
+  },
+  modalDate: {
+    color: COLORS.textSecondary,
+    fontSize: 12,
+    marginBottom: 4,
+  },
+  modalContent: {
+    flex: 1,
+    padding: 20,
+    backgroundColor: COLORS.surface,
+  },
+  modalText: {
+    fontSize: 16,
+    lineHeight: 24,
+    color: COLORS.textPrimary,
+  },
+  modalActions: {
+    flexDirection: 'row',
+    gap: 12,
+    padding: 16,
+    backgroundColor: COLORS.background,
+    borderTopWidth: 1,
+    borderTopColor: COLORS.divider,
+  },
+  editFromViewButton: {
+    backgroundColor: COLORS.primary,
+    flex: 1,
+    padding: 16,
+    borderRadius: 8,
+    alignItems: 'center',
+  },
+  editFromViewButtonText: {
+    color: COLORS.textLight,
+    fontWeight: '600',
+    fontSize: 16,
+  },
+  deleteFromViewButton: {
+    backgroundColor: COLORS.errorLight,
+    flex: 1,
+    padding: 16,
+    borderRadius: 8,
+    alignItems: 'center',
+  },
+  deleteFromViewButtonText: {
+    color: COLORS.error,
+    fontWeight: '600',
+    fontSize: 16,
+  },
+});
 
 export default JournalApp;
-
-/*
-const COLORS = {
-  primary: '#43A047',         // Primary Green
-  primaryDark: '#2E7D32',     // Dark Green
-  primaryLight: '#C8E6C9',    // Light Green
-  primaryVeryLight: '#E8F5E9', // Very Light Green for backgrounds
-  accent: '#00BFA5',          // Accent Teal
-  accentLight: '#B2DFDB',     // Light Accent
-  textPrimary: '#212121',     // Primary Text
-  textSecondary: '#757575',   // Secondary Text
-  textLight: '#FFFFFF',       // Light Text
-  divider: '#E0E0E0',         // Divider
-  error: '#D32F2F',           // Error Red
-  errorLight: '#FFEBEE',      // Light Error Background
-  background: '#F5F5F5',      // Background
-  surface: '#FFFFFF',         // Surface
-  disabled: '#9E9E9E',        // Disabled
-  draftYellow: '#FFF8E1',     // Draft yellow background (softer)
-  draftText: '#FF8F00',       // Draft text color (more visible)
-  cardShadow: 'rgba(0,0,0,0.15)', // Shadow for cards
-}*/
